@@ -2,7 +2,7 @@
 <div id = "profile">
     <header id = "header">
         <b-navbar toggleable="lg" type="dark" variant="primary" id="nav" class="navbar navbar-default navbar-fixed-top">
-            <b-navbar-brand id = "title" v-on:click="isHidden = !isHidden" >☰ MyFirstApp</b-navbar-brand>
+            <b-navbar-brand id = "title" v-on:click="isHidden = !isHidden" >☰ EASAKAY</b-navbar-brand>
         </b-navbar>  
     </header>
     <Sidebar id="sidebar" v-if="!isHidden"></Sidebar>
@@ -10,7 +10,7 @@
     <div  class="container bootstrap snippets">
 
     <div class="card">
-    <img src="https://i.pinimg.com/originals/9f/fd/8a/9ffd8afe7eafe769f1247f30ffdd6494.jpg" alt="me" style="width:100%">
+    <img src="https://kathnielhome.files.wordpress.com/2018/09/kathryn-bernardo-11.jpg" alt="me" style="width:100%">
     
     <h1 id= "fullname" v-html="fn"> </h1>
     
@@ -34,7 +34,7 @@
             <br>
             <div class="panel panel-default">
             <div class="panel-body text-center">
-            <img src="https://i.pinimg.com/originals/9f/fd/8a/9ffd8afe7eafe769f1247f30ffdd6494.jpg" class="img-circle profile-avatar" alt="User avatar">
+            <img src="https://kathnielhome.files.wordpress.com/2018/09/kathryn-bernardo-11.jpg" class="img-circle profile-avatar" alt="User avatar">
             </div>
             </div>
         <div class="panel panel-default">

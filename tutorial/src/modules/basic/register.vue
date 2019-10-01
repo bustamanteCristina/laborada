@@ -72,10 +72,8 @@ body {
 }
 #login-form {
     width: 450px;
-    background: #fff;
+    background:pink;
     padding: 80px 40px;
-    border-top-left-radius: 100px;
-    border-bottom-right-radius: 100px;
     position: absolute;
     left: 50%;
     top: 50%;

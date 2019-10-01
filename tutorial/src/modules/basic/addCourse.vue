@@ -1,155 +1,111 @@
 <template>
-<div>
+  <div id = "addCourse">
     <header id = "header">
         <b-navbar toggleable="lg" type="dark" variant="primary" id="nav" class="navbar navbar-default navbar-fixed-top">
-            <b-navbar-brand id = "title" v-on:click="isHidden = !isHidden" >☰ MyFirstApp</b-navbar-brand>
+            <b-navbar-brand id = "title" v-on:click="isHidden = !isHidden" >☰ EASAKAY</b-navbar-brand>
         </b-navbar>  
     </header>
     <Sidebar id="sidebar" v-if="!isHidden"></Sidebar>
-    <div class="container-fluid">
-    <div class="row">
-        <div id ="addcourse" class="col-sm-6" style="background-color:black;">
-            <div class="form-group">
-            <br>
-            <h2>Add Course</h2>
-            <label class="col-sm-2 control-label"> Course Name</label>
-                <div class="col-sm-4">
-                    <input type="text" v-model="input.courseName" class="form-control">
-                    <br>
-                    <button type="submit" class="btn btn-primary" @click = "submit()">Submit</button>
-                </div>
-            </div> 
-        </div>
-
-        <!--added courses-->
-        <div class="col-sm-6" style="background-color:black; color:white;">
-            <br>
-            <h2>Courses</h2>
-
-
-            <!--show if  course clicked-->
-            <div id= "tcourse"></div>
-            <div id ="addsub">
-                <div class="form-group">
-                <br>
-                <h2>Add Subject</h2>
-                <label class="col-sm-2 control-label"> Subject Name</label>
-                    <div class="col-sm-4">
-                        <input type="text" v-model="input.subName" class="form-control">
-                        <br>
-                        <button type="submit" class="btn btn-primary" @click = "addsub()">Submit</button>
-                    </div>
-                </div> 
-            </div>
-        </div>
-        
+    <br>
+    <div class="jumbotron">
+      <h1>Subjects</h1>
     </div>
-    </div>
-</div>
+    <center>
+      <b-card text-align id="card" img-top tag="article" style="max-width: 30rem;" class="mb-2">
+        <b-form-group label-size="lg" label-for="input-lg">
+          <label id="Subject">Subject:</label>
+          <b-form-input v-model="infos.subject" id="subject" size="lg"></b-form-input>
+          <label id="teacher">Teacher:</label>
+          <br>
+          <b-form-input v-model="infos.teacher" id="teacher" size="lg"></b-form-input>
+          <br>
+          <label id="time">Time:</label>
+          <b-form-input v-model="infos.time" id="time" size="lg"></b-form-input>
+          <label id="time">Day:</label>
+          <b-form-input v-model="infos.day" id="day" size="lg"></b-form-input>
+          <label id="room">Room:</label>
+          <b-form-input v-model="infos.room" id="room" size="lg"></b-form-input>
+          <br>
+          <b-button variant="primary" @click="addItem"
+           >Add Subject</b-button>
+        </b-form-group>
+      </b-card>
+      <b-card text-align id="card1" img-top tag="article" style="max-width: 40rem;" class="mb-2">
+        <table class="table">
+          <thead>
+            <tr >
+              <th scope="col">SUBJECT</th>
+              <th scope="col">TEACHER</th>
+              <th scope="col">TIME</th>
+              <th scope="col">DAY</th>
+              <th scope="col">ROOM</th>
+            </tr>
+          </thead>
+         <tbody v-for="(item, index) in this.rows" :key="index">
+            <tr >
+              <td>{{ item.subject }}</td>
+              <td>{{ item.teacher }}</td>
+              <td>{{ item.time }}</td>
+              <td>{{ item.day }}</td>
+              <td>{{ item.room }}</td>
 
-
+            </tr>
+          </tbody>
+        </table>
+      </b-card>
+    </center>
+  </div>
 </template>
-<script>
-    import Sidebar from 'components/frame/Sidebar.vue'
-    export default {
-        name:'addCourse',
-        data() {
-            return {
-                isHidden: false,
-                input: {
-                    courseName: "", 
-                    subName:""                  
-                }
-            }
-        },
-         components: {
-            Sidebar
-        },
-        methods: {
-            submit(){
-                var node = document.createElement("div");
-                node.id = "coursename"
 
-                var textnode = document.createTextNode(this.input.courseName);
-                node.appendChild(textnode);
-                
-     
-               
-                var div = document.getElementById("addsub");
-                //document.getElementById("tcourse").appendChild(div);
-                div.style.display = "block";
-                 
-                this.input.subName = "default"
-                
-                document.getElementById("tcourse").appendChild(node);
-                document.getElementById("tcourse").append("SUBJECTS:");
-                
-                
-            },
-            addsub(){
-                var node = document.createElement("div");
-                node.id = "subjects"
-                var textnode = document.createTextNode(this.input.subName);
-                node.appendChild(textnode);
-                //document.getElementById("tsub").appendChild(node);
-                document.getElementById("tcourse").appendChild(node);
-                
-                
-            }
-        }
-    }
- 
-    
 
-</script>
 <style>
-#tcourse{
-    color: white;
-    font-size: 20px;
-    text-align:center;
-}
-.form-group{
-    color: white;
-    margin-left:30px;
-}
-#subjects{
-    margin-left: 25%;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: pink;
-    color: black;
-    font-size: 15px;
-    text-align: center;
-    width:50%;
-    border-bottom: solid black;
-}
- 
+#card {
+  margin-top: 20px;
 
-#addsub {
-    color: white;
-    font-size: 20px;
-    display: none; /* Hidden by default */ 
-    z-index: 1; /* Sit on top */  
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+}
+.jumbotron {
+  padding: 20px;
+  text-align: center;
+  background-color: pink;
 }
 
-
-#coursename{
-    
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: white;
-    color: black;
-    font-size: 20px;
-    text-align: center
-}
-#coursename:hover{
-   
-    background-color: #66ccff;
-}
 
 </style>
+
+<script>
+import Sidebar from 'components/frame/Sidebar.vue'
+export default {
+   data() {
+    return {
+        rows:[],
+        infos: {
+        subject: "",
+        teacher: "",
+        time: "",
+        day: "",
+        room: "",
+      }
+    }
+  },
+  components : {
+      Sidebar
+  },
+  methods: {
+    addItem() {
+      var object = {
+        subject: this.infos.subject,
+        teacher: this.infos.teacher,
+        time: this.infos.time,
+        day: this.infos.day,
+        room: this.infos.room
+      };
+      this.rows.push( object )
+      this.infos.subject = ""
+      this.infos.teacher = ""
+      this.infos.time = ""
+      this.infos.day= ""
+      this.infos.room = ""
+    }
+  }
+};
+</script>

@@ -2,7 +2,7 @@
 <div>
     <Header></Header>
     <form  id="login-form">
-	<h1>Welcome!</h1>
+	<h1>Login</h1>
 	<div class="input-box">
 	<input type="email" v-model="input.email" placeholder="Email" required="required">
 	</div>
@@ -12,7 +12,7 @@
 	<label>
 	<input type="checkbox" name="remember"> Remember me
 	</label>
-    <button type="submit" class="login-btn"  v-on:click="login()" >Login</button>
+    <button type="submit" class="login-btn"  v-on:click="login" >Login</button>
 	<div class="bottom-links">
 	<p>Don’t have account? <a href= "modules/register.vue">Sign up</a></p>
 	</div>
@@ -40,7 +40,7 @@
             }
         },
         methods: {
-            login() {
+            logins() {
                 if(this.input.email != "" && this.input.password != "") {  
                     AUTH.loginValidate(this.input.email, this.input.password)
                     //sessionStorage.token = true;
@@ -49,6 +49,16 @@
                     alert('Email and password must be present!')
                 }
                 
+            },
+            login(){
+                let link = 'http://localhost:3000/user'
+                jquery.ajax({
+                    url: link,
+                    method: 'POST',
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                })
             }
         }
     }
@@ -68,10 +78,8 @@ body {
 }
 #login-form {
     width: 450px;
-    background: #fff;
+    background:pink;
     padding: 80px 40px;
-    border-top-left-radius: 100px;
-    border-bottom-right-radius: 100px;
     position: absolute;
     left: 50%;
     top: 50%;

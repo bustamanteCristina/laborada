@@ -86,9 +86,9 @@ import Router from 'router'
 #div1{
   width: 250px;
   font-size: 20px;
-  text-adivgn: center;
+  text-align: center;
   background: none;
-  color: #CFD8DC;
+  color: gray;
   padding: 16px 24px;
   border-bottom: 5px solid #455A64;
   
